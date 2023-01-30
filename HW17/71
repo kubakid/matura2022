@@ -1,0 +1,62 @@
+def funkcja(x):
+    with open('funkcja.txt', 'r') as file:
+        lista = file.readlines()
+    for i in range(len(lista)):
+        lista[i] = lista[i].rstrip()
+        lista[i] = lista[i].lstrip()
+    wspolczynniki = []
+    for i in lista:
+        a = list(map(float, i.split()))
+        wspolczynniki.append(a)
+    if 0 <= x < 1:
+        akt = wspolczynniki[0]
+    elif 1 <= x < 2:
+        akt = wspolczynniki[1]
+    elif 2 <= x < 3:
+        akt = wspolczynniki[2]
+    elif 3 <= x < 4:
+        akt = wspolczynniki[3]
+    elif 4 <= x < 5:
+        akt = wspolczynniki[4]
+
+    wynik = akt[0] + akt[1] * x + akt[2] * x * x + akt[3] * x * x * x
+    return wynik
+
+
+def a():
+    print(round(funkcja(1.5),5))
+
+
+
+a()
+
+
+def b():
+    maks = 0.1
+    x = 0.1
+    for i in range(5000):
+        if funkcja(i/1000) > maks:
+            maks = round(funkcja(i/1000), 5)
+            x = round(i/1000, 3)
+    print(maks)
+    print(x)
+
+
+b()
+
+
+
+def c():
+    mz = []
+    for i in range(50000):
+        if funkcja(round(i/10000, 5)) == 0:
+            mz.append(round(i/10000, 5))
+    for i in mz:
+        print(i)
+
+
+c()
+
+
+
+

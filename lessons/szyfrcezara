@@ -1,0 +1,27 @@
+
+import string
+litery = string.ascii_uppercase
+alfabet = []
+
+for i in litery:
+    alfabet.append(i)
+pierwsze = alfabet[:23]
+
+suma = 0
+while suma < 200:
+    try:
+        tekst = input()
+
+        for j in tekst:
+            if j == " ":
+                print(" ",end= '')
+            elif j in pierwsze:
+                pozycja = pierwsze.index(j)
+                print(alfabet[pozycja+3], end = "")
+            else:
+                pozycja = alfabet.index(j)
+                print(alfabet[pozycja-23], end = '')
+        suma += len(tekst)
+        print("")
+    except:
+        break

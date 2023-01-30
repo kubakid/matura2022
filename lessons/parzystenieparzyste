@@ -1,0 +1,13 @@
+testy = int(input())
+for i in range(testy):
+    liczby = list(map(int, input().split()))
+    poprawne = liczby[1:]
+    kolejnosc = []
+    for j in range(len(poprawne)):
+        if j % 2 != 0:
+            kolejnosc.append(poprawne[j])
+    for j in range(len(poprawne)):
+        if j % 2 == 0:
+            kolejnosc.append(poprawne[j])
+    for j in kolejnosc:
+        print(j, end = " ")

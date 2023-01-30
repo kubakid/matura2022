@@ -1,0 +1,14 @@
+testy = int(input())
+
+for i in range(testy):
+    liczba = input()
+    szesna = str(hex(int(liczba))).lstrip("0x").upper()
+    jedena = ""
+    while int(liczba) != 0:
+        if int(liczba) % 11 == 10:
+            jedena = jedena + "A"
+        else:
+            reszta = str(int(liczba) % 11)
+            jedena = jedena + reszta
+        liczba = int(liczba) // 11
+    print(szesna, jedena[::-1])

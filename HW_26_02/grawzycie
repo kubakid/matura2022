@@ -1,0 +1,39 @@
+import copy
+testy = int(input())
+wspolrzedne = [(0, 1), (0, -1), (1, 1), (-1, -1), (-1, 0), (1, 0), (1, -1), (-1, 1)]
+for p in range(testy):
+    plansza = []
+    for r in range(5):
+        linia = input()
+        plansza.append(list(linia))
+    for a in range(100):
+        druga = copy.deepcopy(plansza)
+        for i in range(5):
+            for j in range(5):
+                ilosc = 0
+                for xy in wspolrzedne:
+                    x = xy[0] + i
+                    y = xy[1] + j
+                    if x > 4:
+                        x = 0
+                    if x < 0:
+                        x = 4
+                    if y > 4:
+                        y = 0
+                    if y < 0:
+                        y = 4
+                    if plansza[x][y] == '1':
+                        ilosc += 1
+                    if (1 < ilosc < 4 and plansza[i][j] == '1') or (ilosc == 3 and plansza[i][j] == "0"):
+                        druga[i][j] = '1'
+                    else:
+                        druga[i][j] = '0'
+            plansza = copy.deepcopy(druga)
+    komorki = []
+    for i in plansza:
+        for j in i:
+            komorki.append(j)
+    if komorki.count("1") > 0:
+        print("yes")
+    else:
+        print('no')

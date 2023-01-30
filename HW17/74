@@ -1,0 +1,107 @@
+import string
+def a():
+    with open('hasla.txt', 'r') as file:
+        hasla = file.readlines()
+    for i in range(len(hasla)):
+        hasla[i]=hasla[i].rstrip()
+    ilosc = 0
+    cyfry = list("0123456789")
+    for i in hasla:
+        tak = True
+        for j in range(len(i)):
+            if i[j] not in cyfry:
+                tak = False
+                break
+        if tak:
+            ilosc += 1
+    print(ilosc)
+
+a()
+
+def b():
+    with open('hasla.txt', 'r') as file:
+        hasla = file.readlines()
+    for i in range(len(hasla)):
+        hasla[i]=hasla[i].rstrip()
+    slownik = {}
+    for i in hasla:
+        if i in slownik:
+            slownik[i] += 1
+        else:
+            slownik[i] = 1
+    zbior = []
+    for i in slownik:
+        if slownik[i] > 1:
+            zbior.append(i)
+    zbior = sorted(zbior)
+    for i in zbior:
+        print(i)
+
+
+
+b()
+
+def c():
+    with open('hasla.txt', 'r') as file:
+        hasla = file.readlines()
+    for i in range(len(hasla)):
+        hasla[i]=hasla[i].rstrip()
+    ilosc = 0
+    for i in hasla:
+        if len(i) < 4:
+            continue
+        else:
+            slowo = list(i)
+            for j in range(len(slowo)-3):
+                czworka = slowo[j:j+4]
+                wartosci = set()
+                for i in czworka:
+                    wartosci.add(ord(i))
+                a, b = max(wartosci), min(wartosci)
+                if len(wartosci) < 4:
+                    continue
+                else:
+                    wartosci.remove(a)
+                    wartosci.remove(b)
+                    wartosci = list(wartosci)
+                    if a - b == 3 and abs(int(wartosci[0]) - int(wartosci[1])):
+                        ilosc += 1
+                        break
+    print(ilosc)
+
+c()
+
+
+
+def d():
+    with open('hasla.txt', 'r') as file:
+        hasla = file.readlines()
+    for i in range(len(hasla)):
+        hasla[i]=hasla[i].rstrip()
+    cyfry = list('0123456789')
+    male = list(string.ascii_lowercase)
+    duze = list(string.ascii_uppercase)
+    ilosc = 0
+    for i in hasla:
+        m = False
+        c = False
+        d = False
+        lista = list(i)
+        for j in lista:
+            if j in cyfry:
+                c = True
+                break
+        for j in lista:
+            if j in male:
+                m = True
+                break
+        for j in lista:
+            if j in duze:
+                d = True
+                break
+        if m and c and d:
+            ilosc += 1
+    print(ilosc)
+
+
+d()

@@ -1,0 +1,69 @@
+import string
+def a():
+    with open('sygnaly.txt', 'r') as file:
+        slowa = file.readlines()
+    for i in range(len(slowa)):
+        slowa[i] = slowa[i].rstrip()
+    liczby = [39 + 40 * i for i in range(50)]
+    lista = list()
+    for i in range(1, len(slowa)):
+        if i in liczby:
+            slowo = list(slowa[i])
+            lista.append(slowo[9])
+
+    lista = ''.join(lista)
+    print(lista)
+
+a()
+
+
+def b():
+    with open('sygnaly.txt', 'r') as file:
+        slowa = file.readlines()
+    for i in range(len(slowa)):
+        slowa[i] = slowa[i].rstrip()
+    slowo = ''
+    maks = 0
+    for i in slowa:
+        a = set()
+        for j in i:
+            a.add(j)
+        if len(a) > maks:
+            slowo = i
+            maks = len(a)
+    print(slowo, maks)
+
+
+b()
+
+
+def c():
+    with open('sygnaly.txt', 'r') as file:
+        slowa = file.readlines()
+    for i in range(len(slowa)):
+        slowa[i] = slowa[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    lista = []
+    for i in slowa:
+        tak = True
+        maks = 0
+        min = 27
+        for j in i:
+            indeks = alfabet.index(j)
+            if indeks > maks:
+                maks = indeks
+            if indeks < min:
+                min = indeks
+            if maks - min > 10:
+                tak = False
+                break
+
+        if tak:
+            lista.append(i)
+
+
+    for i in lista:
+        print(i)
+
+
+c()

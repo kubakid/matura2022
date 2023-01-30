@@ -1,0 +1,74 @@
+def a():
+    with open('napisy72.txt', 'r') as file:
+        napisy = file.readlines()
+    for i in range(len(napisy)):
+        napisy[i]= napisy[i].rstrip()
+    wynik = 0
+    for i in napisy:
+        wyrazy = list(i.split())
+        liczby = []
+        for i in wyrazy:
+            a = len(i)
+            liczby.append(a)
+        a,b = liczby
+        if a >= 3*b or b >= 3 * a:
+            wynik += 1
+    print(wynik)
+
+
+a()
+
+def b():
+    with open('napisy72.txt', 'r') as file:
+        napisy = file.readlines()
+    for i in range(len(napisy)):
+        napisy[i]= napisy[i].rstrip()
+    lista = []
+    for i in napisy:
+        slowa = list(i.split())
+        a , b = slowa
+        miejsce = len(a)
+        if len(b) < len(a):
+            continue
+        if a == b[:miejsce]:
+            lista.append(i + ' '+ b[miejsce:])
+    for i in lista:
+        print(i)
+
+
+b()
+
+def c():
+    with open('napisy72.txt', 'r') as file:
+        napisy = file.readlines()
+    for i in range(len(napisy)):
+        napisy[i]= napisy[i].rstrip()
+    maks = 0
+    for i in napisy:
+        koniec = 0
+        slowa = list(i.split())
+        a , b = slowa
+        while a[-1] == b[-1]:
+            koniec += 1
+            a = a[:-1]
+            b = b[:-1]
+        else:
+            if koniec > maks:
+                maks = koniec
+    linijki = []
+    for i in napisy:
+        koniec = 0
+        slowa = list(i.split())
+        a, b = slowa
+        while a[-1] == b[-1]:
+            koniec += 1
+            a = a[:-1]
+            b = b[:-1]
+        if koniec == 15:
+            linijki.append(i)
+    print(maks)
+    for i in linijki:
+        print(i)
+
+
+c()

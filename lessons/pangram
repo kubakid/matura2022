@@ -1,0 +1,16 @@
+import string
+alfabet = string.ascii_lowercase
+
+slowo = input()
+perf = True
+for i in alfabet:
+    if slowo.count(i) == 0:
+        print("NIE")
+        perf = False
+        break
+    elif slowo.count("a") != slowo.count(i):
+        print("PANGRAM")
+        perf = False
+        break
+if perf:
+    print("PANGRAM PERFEKCYJNY")

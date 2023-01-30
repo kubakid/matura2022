@@ -1,0 +1,6 @@
+test = int(input())
+for i in range(test):
+    liczby = list(map(int, input().split()))
+    liczby = liczby[:0:-1]
+    for h in liczby:
+        print(h, end = " ")

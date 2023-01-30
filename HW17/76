@@ -1,0 +1,75 @@
+def a():
+    with open('szyfr1.txt' ,'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    zaszyfrowane = []
+    klucz = list(map(int, dane[6].split()))
+    for i in range(len(dane)-1):
+        lista = list(dane[i])
+        for j in range(50):
+            a = klucz[j]
+            b = lista[a-1]
+            c = lista[j]
+
+            lista[j] = b
+            lista[a-1] = c
+        lista = ''.join(lista)
+        zaszyfrowane.append(lista)
+    for i in zaszyfrowane:
+        print(i)
+
+
+a()
+
+
+def b():
+    with open('szyfr2.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    napis, klucz = dane
+    napis = list(napis)
+    klucz = list(map(int, klucz.split()))
+    for i in range(50):
+        c = klucz[i % 15] - 1
+        a = napis[c]
+        b = napis[i]
+
+        napis[c] = b
+        napis[i] = a
+    for i in napis:
+        print(i, end='')
+
+
+
+def c():
+    with open('szyfr3.txt', 'r') as file:
+        dane = file.readlines()
+    klucz = [3 , 5 , 1,  4 , 2 , 6]
+    a = dane[0]
+    lista = list(a)
+    lista = lista[::-1]
+    for i in range(50):
+
+        c = klucz[i % 6] - 1
+        a = lista[i]
+        b = lista[c]
+
+        lista[c] = a
+        lista[i] = b
+
+    lista = lista[::-1]
+    for i in lista:
+        print(i, end='')
+
+
+
+c()
+
+
+
+
+
+
+

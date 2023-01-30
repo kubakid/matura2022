@@ -1,0 +1,31 @@
+a = [0 for x in range(10) ]
+
+
+while True:
+    try:
+        czynnosci = input().split()
+        indeks = int(czynnosci[1])
+        wartosc = int(czynnosci[2])
+        if czynnosci[0] == "z":
+            a[indeks] = int(czynnosci[2])
+        elif czynnosci[0] == "+":
+            print(int(a[indeks]) + int(a[wartosc]))
+            # a[indeks] = int(a[indeks]) + int(a[wartosc])
+        elif czynnosci[0] == "-":
+            print(int(a[indeks]) - int(a[wartosc]))
+            # a[indeks] = int(a[indeks]) - int(a[wartosc])
+        elif czynnosci[0] == "*":
+            print(int(a[indeks]) * int(a[wartosc]))
+            # a[indeks] = int(a[indeks]) * int(a[wartosc])
+        elif czynnosci[0] == "/":
+            print(int(a[indeks]) // int(a[wartosc]))
+            # a[indeks] = int(a[indeks]) / int(a[wartosc])
+        elif czynnosci[0] == "%":
+            print(int(a[indeks]) % int(a[wartosc]))
+            # a[indeks] = int(a[indeks]) % int(a[wartosc])
+
+    except:
+        break
+
+
+

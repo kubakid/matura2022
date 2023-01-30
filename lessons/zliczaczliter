@@ -1,0 +1,14 @@
+import string
+ilosc = int(input())
+tekst = []
+for t in range(ilosc):
+    linia = input()
+    tekst.append(linia)
+''.join(tekst)
+tekst = ''.join(tekst)
+for l in string.ascii_letters:
+    wynik = tekst.count(l)
+    if wynik != 0:
+        print(l, str(wynik))
+
+

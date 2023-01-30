@@ -1,0 +1,100 @@
+import string
+def a():
+    with open('dokad77.txt', 'r') as file:
+        linia = file.readlines()
+    alfabet = list(string.ascii_uppercase)
+    a = linia[0]
+    dane = list(a)
+    klucz = list("LUBIMYCZYTAC")
+    lista = []
+    licznik = 0
+    powtorzenia = 0
+    for i in dane:
+        if i not in alfabet:
+            lista.append(i)
+        else:
+            pozycjaklucza = alfabet.index(klucz[licznik])
+            licznik += 1
+            if licznik == len(klucz):
+                licznik = 0
+                powtorzenia += 1
+            sumaindeksow = pozycjaklucza + alfabet.index(i)
+            if sumaindeksow > 25:
+                sumaindeksow -= 26
+            szyfr = alfabet[sumaindeksow]
+            lista.append(szyfr)
+    lista = ''.join(lista)
+    print(lista)
+
+a()
+
+def b():
+    with open('szyfr77.txt', 'r') as file:
+        linie = file.readlines()
+    for i in range(len(linie)):
+        linie[i] = linie[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    dane, klucz = linie
+    dane = list(dane)
+    klucz = list(klucz)
+    lista = []
+    licznik = 0
+    for i in dane:
+        if i not in alfabet:
+            lista.append(i)
+        else:
+            pozycjaklucza = alfabet.index(klucz[licznik])
+            licznik += 1
+            if licznik == len(klucz):
+                licznik = 0
+            sumaindeksow = alfabet.index(i) - pozycjaklucza
+            if sumaindeksow < 0:
+                sumaindeksow += 26
+            szyfr = alfabet[sumaindeksow]
+            lista.append(szyfr)
+    lista = ''.join(lista)
+    print(lista)
+
+
+
+
+b()
+
+def c():
+    with open('szyfr77.txt', 'r') as file:
+        linie = file.readlines()
+    for i in range(len(linie)):
+        linie[i] = linie[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    dane = linie[0]
+    dane = list(dane)
+    wystapienia = {}
+    for i in dane:
+        if i not in alfabet:
+            continue
+        else:
+            if i not in wystapienia:
+                wystapienia[i] = 1
+            else:
+                wystapienia[i] += 1
+    for i in alfabet:
+        print(i + ": " + str(wystapienia[i]))
+    ko = 0
+    n = 0
+    for i in alfabet:
+        ko += wystapienia[i] * (wystapienia[i] - 1)
+        n += wystapienia[i]
+    b = n * (n-1)
+    a = ko / b
+    d = round(0.0285/ (a - 0.0385),2)
+    print(d)
+    print(len("ZLODZIEJCZASU"))
+
+
+
+
+
+
+
+
+c()

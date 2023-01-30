@@ -1,0 +1,85 @@
+def ffibonacciego(n):
+    if n == 1:
+        wartosc = 1
+    elif n == 2:
+        wartosc = 1
+    else:
+        wartosc = ffibonacciego(n-1) + ffibonacciego(n-2)
+    return wartosc
+
+
+def iteracyjnie(n):
+    a = 1
+    b = 1
+    for i in range(3, n+1):
+        c = a + b
+        a = b
+        b = c
+    return b
+
+def a():
+    print(ffibonacciego(10))
+    print(ffibonacciego(20))
+    print(ffibonacciego(30))
+    print(ffibonacciego(40))
+
+a()
+
+
+def pierwsza(n):
+    tak = True
+    for i in range(2,int(n)-1):
+        if int(n) % i ==0:
+            tak=False
+            break
+    return tak
+
+
+def b():
+    wartosci = {}
+    for i in range(1,41):
+        if pierwsza(ffibonacciego(i)):
+            wartosci[i] = ffibonacciego(i)
+    for i in wartosci:
+        print(i, wartosci[i])
+
+
+def c():
+    binarnie = []
+    cel = []
+    for i in range(1,41):
+        wartosc = bin(ffibonacciego(i)).lstrip('0b')
+        binarnie.append(wartosc)
+    docelowa = len(binarnie[-1])
+    for i in binarnie:
+        print(i)
+    for i in binarnie:
+        while len(i) != docelowa:
+            i = '0' + i
+        else:
+            cel.append(i)
+
+    for i in cel:
+        for j in i:
+            if j == '1':
+                print('X', end="")
+            else:
+                print(" ", end='')
+        print("")
+
+c()
+
+
+b()
+
+
+def d():
+    lista = []
+    for i in range(1,41):
+        binarnie = str(bin(ffibonacciego(i)).lstrip('0b'))
+        if binarnie.count('1') == 6:
+            lista.append(binarnie)
+    for i in lista:
+        print(i)
+
+d()

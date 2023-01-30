@@ -1,0 +1,11 @@
+while True:
+    try:
+        litery = input().split()
+        usuwana = litery[0]
+        slowo = litery[1]
+        for i in slowo:
+            if i != usuwana:
+                print(i, end="")
+        print()
+    except:
+        break

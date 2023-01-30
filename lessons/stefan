@@ -1,0 +1,13 @@
+miasta = int(input())
+maks = 0
+suma = 0
+for i in range(miasta):
+    wartosc = int(input())
+    suma += wartosc
+    if suma < 0:
+        suma = 0
+    if maks < suma:
+        maks = suma
+print(maks)
+
+

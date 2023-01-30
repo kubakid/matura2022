@@ -1,0 +1,76 @@
+import string
+def a():
+    with open('dane_6_1.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    for i in dane:
+        slowo = []
+        for j in i:
+            wartosc = alfabet.index(j)
+            if wartosc < 24:
+                slowo += alfabet[wartosc+3]
+            else:
+                slowo += alfabet[wartosc-23]
+        slowo = ''.join(slowo)
+        print(slowo)
+
+
+a()
+
+
+def b():
+    with open('dane_6_2.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    for i in dane:
+        miejsce = i.index(" ")
+        pierwsze = i[:miejsce]
+        klucz = int(i[miejsce+1:]) % 26
+        slowo = ''
+        for j in pierwsze:
+            wartosc = alfabet.index(j)
+            if wartosc < klucz:
+                slowo += alfabet[wartosc - klucz]
+            else:
+                slowo += alfabet[wartosc - 26 - klucz ]
+        slowo = ''.join(slowo)
+        print(slowo)
+
+
+
+
+
+b()
+
+
+
+def c():
+    with open('dane_6_3.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    for i in dane:
+        miejsce = i.index(" ")
+        pierwsze = (i[:miejsce])
+        drugie = list(i[miejsce+1:])
+        klucz = alfabet.index(drugie[0]) - alfabet.index(pierwsze[0])
+        if klucz < 0:
+            klucz = klucz + 26
+        for a in range(len(pierwsze)):
+            wartosc1 = alfabet.index(pierwsze[a])
+            wartosc2 = alfabet.index(drugie[a])
+            if wartosc2 - wartosc1 > 0 and wartosc2 - wartosc1 != klucz:
+                slowo = ''.join(pierwsze)
+                print(slowo)
+                break
+            elif wartosc2 - wartosc1 < 0 and wartosc2 - wartosc1 != klucz - 26:
+                slowo = ''.join(pierwsze)
+                print(slowo)
+                break
+
+c()

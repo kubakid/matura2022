@@ -1,0 +1,17 @@
+def collatz(n):
+    h = 0
+    while n != 1:
+        h += 1
+        if n & 1:
+            n = 3 * n + 1
+
+        else:
+            n = n // 2
+    print(h)
+
+
+testy = int(input())
+
+for i in range(testy):
+    a = int(input())
+    collatz(a)

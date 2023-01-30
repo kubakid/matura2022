@@ -1,0 +1,10 @@
+testy = int(input())
+for i in range(testy):
+    liczba = input()
+    odwrot = liczba[::-1]
+    ilosc = 0
+    while liczba != odwrot:
+        liczba = str(int(liczba) + int(odwrot))
+        odwrot = liczba[::-1]
+        ilosc += 1
+    print(liczba, ilosc)

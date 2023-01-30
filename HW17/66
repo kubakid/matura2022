@@ -1,0 +1,112 @@
+def sumacyfr(n):
+    suma = 0
+    while n != 0:
+        suma += n % 10
+        n //= 10
+    return suma
+
+
+
+def a():
+    with open('trojki.txt', 'r') as file:
+        trojki = file.readlines()
+    for i in range(len(trojki)):
+        trojki[i] = trojki[i].rstrip()
+    lista = []
+    for i in trojki:
+        liczby = list(map(int, i.split()))
+        a, b , c = liczby
+        if sumacyfr(a) + sumacyfr(b) == c:
+            lista.append(i)
+    for i in lista:
+        print(i)
+
+
+a()
+
+
+def pierwsza(n):
+    tak = True
+    for i in range(2,int(n)-1):
+        if int(n) % i ==0:
+            tak=False
+            break
+    return tak
+
+def b():
+    with open('trojki.txt', 'r') as file:
+        trojki = file.readlines()
+    for i in range(len(trojki)):
+        trojki[i] = trojki[i].rstrip()
+    lista = []
+    for i in trojki:
+        liczby = list(map(int, i.split()))
+        a, b , c = liczby
+        if pierwsza(a) and pierwsza(b) and a*b == c:
+            lista.append(i)
+    for i in lista:
+        print(i)
+
+
+b()
+
+def c():
+    with open('trojki.txt', 'r') as file:
+        trojki = file.readlines()
+    for i in range(len(trojki)):
+        trojki[i] = trojki[i].rstrip()
+    lista = []
+    for i in range(len(trojki)-1):
+        liczby = list(map(int, trojki[i].split()))
+        liczby1 = list(map(int, trojki[i+1].split()))
+        a, b , c = liczby
+        d, e, f = liczby1
+        if (a**2 + b**2 == c**2 or a**2 + c**2 == b**2 or b**2 + c**2 == a**2) and (d**2+e**2==f**2 or e**2 + f**2 == d**2 or e**2 == d**2 + f**2):
+            lista.append(trojki[i])
+            lista.append(trojki[i+1])
+    for i in lista:
+        print(i)
+
+
+c()
+
+
+
+def d():
+    with open('trojki.txt', 'r') as file:
+        trojki = file.readlines()
+    for i in range(len(trojki)):
+        trojki[i] = trojki[i].rstrip()
+    ilosc = 0
+    maxdlugosc = 0
+    aktualnie = 1
+    for i in range(len(trojki)-1):
+        trojkat = True
+        trojkat1 = True
+        liczby = list(map(int, trojki[i].split()))
+        liczby1 = list(map(int, trojki[i + 1].split()))
+        a, b , c = liczby
+        d, e, f = liczby1
+        if a + b > c and a + c > b and b + c > a:
+            ilosc += 1
+        else:
+            trojkat = False
+        if not(d + e > f and d + f > e and e + f > d):
+            trojkat1= False
+        if trojkat and trojkat1:
+            aktualnie += 1
+            if aktualnie > maxdlugosc:
+                maxdlugosc = aktualnie
+        else:
+            aktualnie = 1
+    liczby = list(map(int, trojki[-1].split()))
+    a, b, c = liczby
+    if a + b > c and a + c > b and b + c > a:
+        ilosc += 1
+    print(ilosc)
+    print(maxdlugosc)
+
+
+
+d()
+

@@ -1,0 +1,55 @@
+def a():
+    with open('dane.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    tak = 0
+    for i in liczby:
+        if i[0] == i[-1]:
+            tak += 1
+    print(tak)
+
+a()
+
+def b():
+    with open('dane.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    dziesiec = []
+    for i in liczby:
+        liczba = int(i, base=8)
+        dziesiec.append(liczba)
+    lala = 0
+    for i in dziesiec:
+        if str(i)[0] == str(i)[-1]:
+            lala += 1
+    print(lala)
+
+b()
+
+
+def c():
+    with open('dane.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    a = 0
+    lista = []
+    for i in liczby:
+        tak = True
+        for j in range(len(i) - 1):
+            if i[j] > i[j+1]:
+                tak = False
+                break
+        if tak:
+            lista.append(i)
+            a += 1
+    print(a)
+    dziesiec = []
+    for i in lista:
+        dziesiec.append(int(i, base = 10))
+    print(max(dziesiec))
+    print(min(dziesiec))
+
+c()

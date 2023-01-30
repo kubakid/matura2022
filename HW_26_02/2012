@@ -1,0 +1,65 @@
+import string
+def a():
+    with open("tj.txt", 'r') as file:
+        tekstjawny = file.readlines()
+    with open('klucze1.txt', 'r') as file:
+        klucze = file.readlines()
+    for i in range(len(tekstjawny)):
+        tekstjawny[i] = tekstjawny[i].rstrip()
+    for i in range(len(klucze)):
+        klucze[i] = klucze[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    wszystko = []
+    for i in range(len(tekstjawny)):
+        slowo = []
+        for j in range(len(tekstjawny[i])):
+            h = 0
+            klucz = klucze[i]
+            while len(tekstjawny[i]) != len(klucz):
+                klucz = klucz + klucz[h]
+                h += 1
+
+            wartosc = 1 + alfabet.index(tekstjawny[i][j]) + ord(klucz[j])
+            if wartosc > 90:
+                slowo.append(chr(wartosc - 26))
+            else:
+                slowo.append(chr(wartosc))
+        slowo = ''.join(slowo)
+        wszystko.append(slowo)
+    for i in wszystko:
+        print(i)
+
+a()
+
+
+def b():
+    with open("sz.txt", 'r') as file:
+        szyfry = file.readlines()
+    with open('klucze2.txt', 'r') as file:
+        klucze = file.readlines()
+    for i in range(len(szyfry)):
+        szyfry[i] = szyfry[i].rstrip()
+    for i in range(len(klucze)):
+        klucze[i] = klucze[i].rstrip()
+    alfabet = list(string.ascii_uppercase)
+    wszystko = []
+    for i in range(len(szyfry)):
+        slowo = []
+        for j in range(len(szyfry[i])):
+            h = 0
+            klucz = klucze[i]
+            while len(szyfry[i]) != len(klucz):
+                klucz = klucz + klucz[h]
+                h += 1
+
+            wartosc = ord(szyfry[i][j]) - alfabet.index(klucz[j]) -1
+            if wartosc < 65:
+                slowo.append(chr(wartosc + 26))
+            else:
+                slowo.append(chr(wartosc))
+        slowo = ''.join(slowo)
+        wszystko.append(slowo)
+    for i in wszystko:
+        print(i)
+
+b()

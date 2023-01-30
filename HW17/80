@@ -1,0 +1,68 @@
+def a():
+    with open('dane_trojkaty.txt', 'r') as file:
+        dlugosci = file.readlines()
+    for i in range(len(dlugosci)):
+        dlugosci[i] = dlugosci[i].rstrip()
+    lista = []
+    for i in range(len(dlugosci)-2):
+        a = int(dlugosci[i])
+        b = int(dlugosci[i+1])
+        c = int(dlugosci[i+2])
+        if a * a + b*b == c*c or a*a + c*c == b*b or b*b + c*c == a*a:
+            trojka = [a, b , c]
+            lista.append(trojka)
+    for i in lista:
+        for j in i:
+            print(j, end=' ')
+        print('')
+
+
+# a()
+
+
+def b():
+    with open('dane_trojkaty.txt', 'r') as file:
+        dlugosci = file.readlines()
+    for i in range(len(dlugosci)):
+        dlugosci[i] = dlugosci[i].rstrip()
+    dlugosci = sorted(list(map(int, dlugosci)))
+    dlugosci = dlugosci[::-1]
+    maks = 0
+    for i in dlugosci:
+        for j in dlugosci:
+            if j == i:
+                continue
+            for h in dlugosci:
+                if i == h or h == j:
+                    continue
+                if j + h > i and j + i > h and h + i > j:
+                    obw = j + i + h
+                    if obw > maks:
+                        maks = obw
+    print(maks)
+
+
+
+# b()
+
+
+def c():
+    with open('dane_trojkaty.txt', 'r') as file:
+        dlugosci = file.readlines()
+    for i in range(len(dlugosci)):
+        dlugosci[i] = dlugosci[i].rstrip()
+    ilosc = 0
+    for i in dlugosci:
+        for j in dlugosci:
+            if j == i:
+                continue
+            for h in dlugosci:
+                if i == h or h == j:
+                    continue
+                if int(j) + int(h) > int(i) and int(j) + int(i) > int(h) and int(h) + int(i) > int(j):
+                    ilosc += 1
+    print(int(ilosc/6))
+
+
+
+c()

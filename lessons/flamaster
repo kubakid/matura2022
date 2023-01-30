@@ -1,0 +1,15 @@
+n = int(input())
+for i in range(n):
+    slowo = input()
+    dlugosc = len(slowo)
+    krocej = []
+    ilosc = 0
+    for j, i in enumerate(slowo):
+        ilosc += 1
+        if j == dlugosc-1 or slowo[j] != slowo[j+1]:
+            if ilosc <= 2:
+                krocej += [slowo[j] * ilosc]
+            else:
+                krocej += [slowo[j] + str(ilosc)]
+            ilosc = 0
+    print("".join(krocej))

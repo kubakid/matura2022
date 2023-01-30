@@ -1,0 +1,20 @@
+while True:
+    try:
+        tekst = input()
+        wielkie = False
+        naprawione = []
+        for i in range(len(tekst)):
+            if tekst[i] == "<":
+                wielkie = True
+            elif tekst[i] == ">":
+                wielkie = False
+            if wielkie:
+                naprawione.append(str(tekst[i]).upper())
+            else:
+                naprawione.append((str(tekst[i])))
+        naprawione = ''.join(naprawione)
+        print(naprawione)
+
+
+    except:
+        break

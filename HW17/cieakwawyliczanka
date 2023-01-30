@@ -1,0 +1,15 @@
+n = int(input())
+liczby = ['5']
+liczba = '5':
+if n ==  1:
+    print(liczby[-1])
+else:
+    for i in range(n-1):
+        if liczba[-1] == '5':
+            liczba = liczba[:-1] + '6'
+            if liczba in liczby
+
+
+# opcji jest 2 razy wiecej niz len liczby
+
+    print(liczba)

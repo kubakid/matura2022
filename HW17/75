@@ -1,0 +1,88 @@
+import string
+def szyfr( x , a , b):
+    slowo = ''
+    alfabet = list(string.ascii_lowercase)
+    lista = list(x)
+    for j in lista:
+        indeks = alfabet.index(j)
+        wynik = indeks * int(a) + int(b)
+        wynik = wynik % 26
+        slowo += alfabet[wynik]
+    return slowo
+
+
+
+# print(szyfr('u',  9 , 15))
+
+
+
+def a():
+    with open('tekst75.txt', 'r') as file:
+        tekst = file.readlines()
+    tekst = tekst[0]
+    slowa = list(tekst.split())
+    for i in slowa:
+        if i[0] == 'd' == i[-1]:
+            print(i)
+
+a()
+
+
+def b():
+    with open('tekst75.txt', 'r') as file:
+        tekst = file.readlines()
+    tekst = tekst[0]
+    slowa = list(tekst.split())
+    for i in slowa:
+        if len(i) > 9:
+            print(szyfr(i, 5, 2))
+
+
+b()
+
+
+
+def c():
+    with open('probka.txt', 'r') as file:
+        linijki = file.readlines()
+    for i in range(len(linijki)):
+        linijki[i] = linijki[i].rstrip()
+    szyfry = []
+    for i in linijki:
+        lista = list(i.split())
+        a , b = lista
+        for c in range(26):
+            tak = False
+            for d in range(26):
+                if a == szyfr(b , c , d):
+                    szyfry.append((c, d))
+                    tak = True
+                    break
+            if tak:
+                break
+
+
+
+    deszyfry = []
+
+    for i in linijki:
+        lista = list(i.split())
+        a , b = lista
+        for c in range(26):
+            tak = False
+            for d in range(26):
+                if b == szyfr(a , c , d):
+                    deszyfry.append((c, d))
+                    tak = True
+                    break
+            if tak:
+                break
+
+    for i in range(len(deszyfry)):
+        print(i+1)
+        print("szyfr", szyfry[i])
+        print("deszyfr", deszyfry[i])
+
+
+
+c()

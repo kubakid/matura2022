@@ -1,0 +1,12 @@
+import math
+o = int(input())
+
+for i in range(o):
+    a = int(input())
+    b = list(map(int, input().split()))
+    nww = 1
+    for j in range(len(b)):
+        nwd = math.gcd(nww, b[j])
+        nowe = nww * b[j] // nwd
+        nww = int(nowe)
+    print(nww)

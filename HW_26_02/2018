@@ -1,0 +1,63 @@
+def a():
+    with open('slowa2.txt' , 'r') as file:
+        slowa = file.readlines()
+    for i in range(len(slowa)):
+        slowa[i] = slowa[i].rstrip()
+    ilosc = 0
+    for i in slowa:
+        indeks = i.index(" ")
+        pierwsze = i[:indeks]
+        drugie = i[indeks+1:]
+        if pierwsze[-1] == 'A':
+            ilosc += 1
+        if drugie[-1] == "A":
+            ilosc += 1
+    print(ilosc)
+
+a()
+
+def b():
+    with open('slowa2.txt' , 'r') as file:
+        slowa = file.readlines()
+    for i in range(len(slowa)):
+        slowa[i] = slowa[i].rstrip()
+    ilosc = 0
+    for i in slowa:
+        indeks = i.index(" ")
+        pierwsze = i[:indeks]
+        drugie = i[indeks+1:]
+        if pierwsze in drugie:
+            ilosc += 1
+    print(ilosc)
+
+
+b()
+
+
+def c():
+    with open('slowa2.txt' , 'r') as file:
+        slowa = file.readlines()
+    for i in range(len(slowa)):
+        slowa[i] = slowa[i].rstrip()
+    ilosc = 0
+    for i in slowa:
+        indeks = i.index(" ")
+        pierwsze = i[:indeks]
+        drugie = i[indeks+1:]
+        a = {}
+        b = {}
+        for j in pierwsze:
+            if j not in a:
+                a[j] = 1
+            else:
+                a[j] += 1
+        for h in drugie:
+            if h not in b:
+                b[h] = 1
+            else:
+                b[h] += 1
+        if len(pierwsze) == len(drugie) and a == b:
+            ilosc += 1
+    print(ilosc)
+
+c()

@@ -1,0 +1,13 @@
+import math
+# 86400
+testy = int(input())
+
+for i in range(testy):
+    a = input().split()
+    osoby = int(a[0])
+    opakowanie = int(a[1])
+    ciastka = 0
+    for j in range(osoby):
+        czas = int(input())
+        ciastka += 86400 // czas
+    print(math.ceil(ciastka/opakowanie))

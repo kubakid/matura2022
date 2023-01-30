@@ -1,0 +1,13 @@
+while True:
+    try:
+        zdanie = input().split()
+        slowa = 0
+        liczby = 0
+        for i in zdanie:
+            if 47 < ord(i[0]) < 58:
+                liczby += 1
+            elif 64 < ord(i[0]) < 91 or 96 < ord(i[0]) < 123:
+                slowa += 1
+        print(str(liczby), str(slowa))
+    except:
+        break

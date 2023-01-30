@@ -1,0 +1,113 @@
+def a():
+    with open('liczb1.txt', 'r') as file:
+        jeden = file.readlines()
+    for i in range(len(jeden)):
+        jeden[i] = jeden[i].rstrip()
+    with open('liczb2.txt', 'r') as file:
+        dwa = file.readlines()
+    for i in range(len(dwa)):
+        dwa[i] = dwa[i].rstrip()
+    min = 10000
+    maks = 0
+    lista1 = []
+    for i in jeden:
+        liczba = int(i, base=8)
+        lista1.append(liczba)
+    for i in lista1:
+        if i < min:
+            min = i
+        if i > maks:
+            maks = i
+    for i in dwa:
+        if int(i) > maks:
+            maks = int(i)
+        if int(i) < min:
+            min = int(i)
+    min = oct(min).lstrip('0o')
+    maks = oct(maks).lstrip('0o')
+
+    print(min, maks)
+
+
+a()
+
+
+def b():
+    with open('liczb2.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    poczatek = ''
+    maks = 1
+    aktual = 1
+    ruchome = ''
+    for i in range(len(liczby)-1):
+        if aktual == 1:
+            ruchome = liczby[i]
+        przed = int(liczby[i])
+        po = int(liczby[i+1])
+        if przed <= po:
+            aktual += 1
+            if aktual > maks:
+                maks = aktual
+                poczatek = ruchome
+        else:
+            aktual = 1
+    print(maks)
+    print(poczatek)
+
+
+
+b()
+
+def c():
+    with open('liczb1.txt', 'r') as file:
+        jeden = file.readlines()
+    for i in range(len(jeden)):
+        jeden[i] = jeden[i].rstrip()
+    with open('liczb2.txt', 'r') as file:
+        dwa = file.readlines()
+    for i in range(len(dwa)):
+        dwa[i] = dwa[i].rstrip()
+    lista1 = []
+    for i in jeden:
+        liczba = int(i, base=8)
+        lista1.append(liczba)
+    rowne = 0
+    wieksza = 0
+    for i in range(len(lista1)):
+        if lista1[i] == int(dwa[i]):
+            rowne += 1
+        elif lista1[i] > int(dwa[i]):
+            wieksza += 1
+    print(rowne)
+    print(wieksza)
+
+c()
+
+def d():
+    with open('liczb2.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    osemkowy = []
+    listadziesietna = []
+    listaosemkowa = []
+    for i in liczby:
+        wartosc = str(oct(int(i))).lstrip("0o")
+        osemkowy.append(wartosc)
+    for i in liczby:
+        for j in i:
+            listadziesietna.append(j)
+    for i in osemkowy:
+        for j in i:
+            listaosemkowa.append(j)
+    ilosc10 = listadziesietna.count('6')
+    ilosc8 = listaosemkowa.count('6')
+    print(ilosc8, ilosc10)
+
+d()
+
+
+
+

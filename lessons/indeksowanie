@@ -1,0 +1,6 @@
+start = list(map(int, input().split()))
+liczby = list(map(int, input().split()))
+for i in liczby[start[1]:]:
+    print(i, end=" ")
+for i in liczby[:start[1]]:
+    print(i, end =" ")

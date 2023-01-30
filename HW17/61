@@ -1,0 +1,87 @@
+def a():
+    with open('ciagi.txt', 'r') as file:
+        ciagi = file.readlines()
+    for i in range(len(ciagi)):
+        ciagi[i] = ciagi[i].rstrip()
+    maksroznica = 0
+    elementy = []
+    for i in range(len(ciagi)):
+        if int(i) % 2 == 0:
+            ilosc = ciagi[i]
+        else:
+            tak = True
+            lista = list(ciagi[i].split())
+            roznica = int(lista[1]) - int(lista[0])
+            for k in range(1, len(lista)):
+                if int(lista[k]) - int(lista[k-1]) != roznica:
+                    tak = False
+                    break
+            if tak:
+                elementy.append(i)
+                if roznica > maksroznica:
+                    maksroznica = roznica
+
+    print(len(elementy))
+    print(maksroznica)
+
+a()
+
+
+def b():
+    with open('ciagi.txt', 'r') as file:
+        ciagi = file.readlines()
+    for i in range(len(ciagi)):
+        ciagi[i] = ciagi[i].rstrip()
+    szesciany = [i**3 for i in range(1, 101)]
+    for i in range(len(ciagi)):
+        if int(i) % 2 != 0:
+            lista = list(ciagi[i].split())
+            maks = 0
+            for k in range(len(lista)):
+                if int(lista[k]) in szesciany:
+                    if maks < int(lista[k]):
+                        maks = int(lista[k])
+            if maks > 0:
+                print(maks)
+
+
+
+b()
+
+def c():
+    with open('bledne.txt', 'r') as file:
+        ciagi = file.readlines()
+    for i in range(len(ciagi)):
+        ciagi[i] = ciagi[i].rstrip()
+    for i in range(len(ciagi)):
+        if int(i) % 2 == 0:
+            continue
+        elif int(i) % 2 != 0:
+            roznice = []
+            lista = list(map(int, ciagi[i].split()))
+            for k in range(1, len(lista)):
+                minus = int(lista[k]) - int(lista[k-1])
+                roznice.append(minus)
+            aktualna = 1
+            for j in roznice:
+                if roznice.count(j) > 1:
+                    aktualna = int(j)
+            poprawny = []
+            if lista [1] - aktualna != lista[0] and lista[2] - aktualna == lista[1]:
+                print(lista[0])
+                continue
+            baza = lista[0]
+            for j in range(len(lista)):
+                element = baza + j * aktualna
+                poprawny.append(element)
+            for d in range(len(lista)):
+                if lista[d] != poprawny[d]:
+                    print(lista[d])
+                    break
+
+
+
+c()
+
+
+

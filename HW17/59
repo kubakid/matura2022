@@ -1,0 +1,76 @@
+def rozklad(n):
+    czynniki = list()
+    while n != 1:
+        for i in range(2, n+1):
+            if n % i == 0:
+                n = int(n/i)
+                czynniki.append(i)
+                break
+        if n == 1:
+            break
+    return czynniki
+
+
+def a():
+    with open('liczby59.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    spelnia = 0
+    for i in liczby:
+        czynniki = set(rozklad(int(i)))
+        nieparzyste = False
+        if len(czynniki) == 3:
+            nieparzyste = True
+            for j in czynniki:
+                if j % 2 == 0:
+                    nieparzyste = False
+                    break
+        if nieparzyste:
+            spelnia += 1
+    print(spelnia)
+
+
+a()
+
+
+def b():
+    with open('liczby59.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    ilosc = 0
+    for i in liczby:
+        odwrocona = int(i[::-1])
+        suma = str(int(i) + odwrocona)
+        if suma == suma[::-1]:
+            ilosc +=1
+    print(ilosc)
+
+b()
+
+def ciag(n):
+    moc = 0
+    while len(str(n)) != 1:
+        iloczyn = 1
+        for j in str(n):
+            iloczyn *= int(j)
+        n = iloczyn
+        moc = moc + 1
+    return moc
+
+
+def c():
+    with open('liczby59.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    for j in range(1,9):
+        suma = 0
+        for i in liczby:
+            if ciag(i) == j:
+                suma += 1
+        print(j, suma)
+
+
+c()

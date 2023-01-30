@@ -1,0 +1,76 @@
+def a():
+    with open("binarne.txt", 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    ilosc = 0
+    lista = []
+    maks = 0
+    napism = ""
+    for i in liczby:
+        polowa = int(len(i)/2)
+        jeden = i[:polowa]
+        druga = i[polowa:]
+        if jeden == druga:
+            ilosc += 1
+            lista.append(i)
+            if len(i) > maks:
+                maks = len(i)
+                napism = i
+    print(ilosc)
+    print(maks)
+    print(napism)
+
+
+a()
+
+
+def b():
+    with open("binarne.txt", 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    ilosc = 0
+    mindlugosc = 100
+    for i in liczby:
+        niepoprawny = False
+        czworka = i
+        while int(czworka[0:4], base = 2) < 10:
+            czworka = czworka[4:]
+            if len(czworka) == 0:
+                break
+        else:
+            niepoprawny = True
+        if niepoprawny:
+            ilosc += 1
+            if len(i) < mindlugosc:
+                mindlugosc = len(i)
+    print(ilosc)
+    print(mindlugosc)
+
+
+b()
+
+
+def c():
+    with open("binarne.txt" , 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i]=liczby[i].rstrip()
+    lista = []
+    maks = 0
+    zapis = ''
+    for i in liczby:
+        naturalna = int(i, base=2)
+        if naturalna <= 65535:
+            if naturalna > maks:
+                maks = naturalna
+                zapis = i
+    print(maks)
+    print(zapis)
+
+
+c()
+
+
+

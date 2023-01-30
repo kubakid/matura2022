@@ -1,0 +1,13 @@
+while True:
+    try:
+        abc = list(map(float, input().split()))
+        a, b, c = abc
+        delta = b**2 - 4 * a * c
+        if delta < 0:
+            print("0")
+        elif delta > 0:
+            print("2")
+        else:
+            print("1")
+    except:
+        break

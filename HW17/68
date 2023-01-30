@@ -1,0 +1,102 @@
+def a():
+    with open('dane_napisy.txt', 'r') as file:
+        napisy = file.readlines()
+    for i in range(len(napisy)):
+        napisy[i] = napisy[i].rstrip()
+    ilosc = 0
+    for i in napisy:
+        slowa = list(i.split())
+        slowo1 = slowa[0]
+        slowo2 = slowa[1]
+        zbior1 = set()
+        zbior2 = set()
+        for h in slowo1:
+            for j in h:
+                zbior1.add(j)
+        for h in slowo2:
+            for j in h:
+                zbior2.add(j)
+        if len(slowo1) == len(slowo2) and zbior1 == zbior2 and len(zbior1) == 1:
+            ilosc += 1
+    print(ilosc)
+
+
+
+a()
+
+
+def b():
+    with open('dane_napisy.txt', 'r') as file:
+        napisy = file.readlines()
+    for i in range(len(napisy)):
+        napisy[i] = napisy[i].rstrip()
+    ilosc = 0
+    for i in napisy:
+        slowa = list(i.split())
+        slowo1 = slowa[0]
+        slowo2 = slowa[1]
+        jeden = {}
+        dwa = {}
+        for h in slowo1:
+            if h in jeden:
+                jeden[h] += 1
+            else:
+                jeden[h] = 1
+        for h in slowo2:
+            if h in dwa:
+                dwa[h] += 1
+            else:
+                dwa[h] = 1
+        if jeden == dwa:
+            ilosc += 1
+    print(ilosc)
+
+b()
+
+
+def c():
+    with open('dane_napisy.txt', 'r') as file:
+        napisy = file.readlines()
+    for i in range(len(napisy)):
+        napisy[i] = napisy[i].rstrip()
+    maks = 0
+    lista = []
+    for i in napisy:
+        slowa = list(i.split())
+        slowo1 = slowa[0]
+        slowo2 = slowa[1]
+        lista.append(slowo1)
+        lista.append(slowo2)
+    for i in range(len(lista)):
+        ilosc = 1
+        jeden = {}
+        for h in lista[i]:
+            if h in jeden:
+                jeden[h] += 1
+            else:
+                jeden[h] = 1
+        for j in range(len(lista)):
+            if i == j:
+                continue
+            else:
+                dwa = {}
+                for h in lista[j]:
+                    if h in dwa:
+                        dwa[h] += 1
+                    else:
+                        dwa[h] = 1
+                if jeden == dwa:
+                    ilosc += 1
+                    if ilosc > maks:
+                        maks = ilosc
+    print(maks)
+
+
+
+c()
+
+
+
+
+
+

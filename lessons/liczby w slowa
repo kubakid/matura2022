@@ -1,0 +1,61 @@
+def czytanietrojek(a, b, c):
+    if a == 1:
+        print("sto",end=' ')
+    elif a == 2:
+        print("dwiescie",end=' ')
+    elif a == 3:
+        print('trzysta',end=' ')
+    elif a == 4:
+        print('czterysta',end=' ')
+    elif a == 5:
+        print("piecset",end=' ')
+    elif a == 6:
+        print("szescset",end=' ')
+    elif a == 7:
+        print('siedemset',end=' ')
+    elif a == 8:
+        print('osiemset', end=' ')
+    elif a == 9:
+        print("dziewiecset", end=' ')
+    else:
+        print(" ",end='')
+    if b == 1:
+        print("dziesiec",end=' ')
+    elif b == 2:
+        print("dwadziescia",end=' ')
+    elif b == 3:
+        print('trzydziesci',end=' ')
+    elif b == 4:
+        print('czterdziesci',end=' ')
+    elif b == 5:
+        print("piecdziesiat",end=' ')
+    elif b == 6:
+        print("szescdziesiat",end=' ')
+    elif b == 7:
+        print('siedemdziesiat',end=' ')
+    elif b== 8:
+        print('osiemdziesiat', end=' ')
+    elif b == 9:
+        print("dziewiecdziesiat", end=' ')
+    else:
+        print(' ', end='')
+    if c == 1:
+        print("jeden",end=' ')
+    elif c == 2:
+        print("dwa",end=' ')
+    elif c == 3:
+        print('trzy',end=' ')
+    elif c == 4:
+        print('cztery',end=' ')
+    elif c == 5:
+        print("piec",end=' ')
+    elif c == 6:
+        print("szesc",end=' ')
+    elif c == 7:
+        print('siedem',end=' ')
+    elif c == 8:
+        print('osiem', end=' ')
+    elif c == 9:
+        print("dziewiec", end=' ')
+
+print(czytanietrojek(9,7,1))

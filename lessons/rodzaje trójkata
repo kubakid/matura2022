@@ -1,0 +1,15 @@
+while True:
+    try:
+        dlugosci = list(map(float, input().split()))
+        a, b, c = dlugosci
+        if a + b > c and a + c > b and b + c > a:
+            if a**2 + b**2 == c**2 or b**2 + c**2 == a**2 or b**2 == c**2 + a**2:
+                print('prostokatny')
+            elif a**2 + b**2 > c**2 and b**2 + c**2 > a**2 and b**2 < c**2 + a**2:
+                print('ostrokatny')
+            else:
+                print('rozwartokatny')
+        else:
+            print("brak")
+    except:
+        break

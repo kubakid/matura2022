@@ -1,0 +1,98 @@
+def a():
+    with open('dane.txt', 'r') as file:
+        piksele = file.readlines()
+    for i in range(len(piksele)):
+        piksele[i] = piksele[i].rstrip()
+    najjasniejszy = 0
+    najciemniejszy = 350
+    for i in piksele:
+        lista = i.split()
+        for j in lista:
+            if int(j) > najjasniejszy:
+                najjasniejszy = int(j)
+            elif int(j) < najciemniejszy:
+                najciemniejszy = int(j)
+    print(najciemniejszy)
+    print(najjasniejszy)
+
+
+
+a()
+
+def b():
+    with open('dane.txt', 'r') as file:
+        piksele = file.readlines()
+    for i in range(len(piksele)):
+        piksele[i] = piksele[i].rstrip()
+    ilosc = 0
+    for i in piksele:
+        lista = list(i.split())
+        if lista[::] != lista[::-1]:
+            ilosc += 1
+
+    print(ilosc)
+
+
+b()
+
+
+def c():
+    with open('dane.txt', 'r') as file:
+        piksele = file.readlines()
+    for i in range(len(piksele)):
+        piksele[i] = piksele[i].rstrip()
+    wszystko = list()
+    for i in piksele:
+        wszystko.append(list(i.split()))
+    ilosc = 0
+    wspolrzedne = [[1, 0], [-1,0], [0, 1], [0, -1]]
+    for i in range(0, 200):
+        for j in range(0, 320):
+            for xy in wspolrzedne:
+                x = xy[0] + j
+                y = xy[1] + i
+                if x > 319 or x < 0 or y > 199 or y < 0:
+                    continue
+                elif abs(int(wszystko[i][j]) - int(wszystko[y][x])) > 128:
+                    ilosc += 1
+                    break
+
+    print(ilosc)
+
+
+
+
+c()
+
+
+def d():
+    with open('dane.txt', 'r') as file:
+        piksele = file.readlines()
+    for i in range(len(piksele)):
+        piksele[i] = piksele[i].rstrip()
+    for i in range(len(piksele)):
+        piksele[i] = piksele[i].rstrip()
+    wszystko = list()
+    for i in piksele:
+        wszystko.append(list(i.split()))
+    maks = 0
+    for y in range(0,320):
+        aktualny = 1
+        for x in range(1, 200):
+            if wszystko[x-1][y] == wszystko[x][y]:
+                aktualny += 1
+            else:
+                if aktualny > maks:
+                    maks = aktualny
+                else:
+                    aktualny = 1
+    print(maks)
+
+
+
+d()
+
+
+
+
+

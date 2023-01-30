@@ -1,0 +1,77 @@
+import math
+def a():
+    with open('dane_ulamki.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    min = 3.0
+    para = ''
+    for i in dane:
+        liczby = list(i.split())
+        wartosc = int(liczby[0]) / int(liczby[1])
+        if wartosc <  min:
+            min = wartosc
+            para = i
+    print(para)
+
+
+a()
+
+
+def b():
+    with open('dane_ulamki.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    ilosc = 0
+    for i in dane:
+        liczby = list(map(int, i.split()))
+        nwd = math.gcd(liczby[0], liczby[1])
+        if nwd == 1:
+            ilosc += 1
+    print(ilosc)
+
+
+b()
+
+
+def c():
+    with open('dane_ulamki.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    suma = 0
+    for i in dane:
+        liczby = list(map(int, i.split()))
+        licznik = liczby[0]
+        mianownik = liczby[1]
+        nwd = math.gcd(licznik, mianownik)
+        while nwd != 1:
+            licznik /= nwd
+            mianownik /= nwd
+            nwd = math.gcd(int(licznik), int(mianownik))
+        suma += licznik
+    print(int(suma))
+
+
+c()
+
+
+def d():
+    with open('dane_ulamki.txt', 'r') as file:
+        dane = file.readlines()
+    for i in range(len(dane)):
+        dane[i] = dane[i].rstrip()
+    suma = 0
+    b = 4 * 9 * 25 * 49 * 13
+    for i in dane:
+        liczby = list(map(int, i.split()))
+        licznik = liczby[0]
+        mianownik = liczby[1]
+        suma += int(b * licznik/mianownik)
+    print(suma)
+
+
+d()
+
+

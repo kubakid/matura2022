@@ -1,0 +1,14 @@
+while True:
+    try:
+        haslo = input()
+        odp = []
+        for i in range(len(haslo)):
+            if i % 2 == 0:
+                odp.append(haslo[i])
+            else:
+                odp.insert(-1, haslo[i])
+        for i in odp:
+            print(i, end="")
+        print()
+    except:
+        break

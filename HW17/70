@@ -1,0 +1,71 @@
+import math
+
+def f(x):
+    wynik = 0
+    wynik += x*x*x*x /500
+    wynik -= x*x /200
+    wynik -= 3/250
+    return wynik
+
+def g(x):
+    wynik = 0
+    wynik -= x*x*x /30
+    wynik += x/20
+    wynik += 1/6
+    return wynik
+
+
+
+
+
+def a():
+    pole = 0
+    x = 2
+    h = 0.001
+    y = 2
+    while x < 10:
+        pole += ((f(x) + f(x+h)) * h)/2
+        x += 0.001
+
+    h = 0.001
+    while y < 10:
+        pole -= ((g(y) + g(y + h))* h)/2
+        y += 0.001
+    pole = round(pole, 3)
+
+    print(pole)
+
+a()
+
+
+def b():
+    x = 2
+    dlugosc = 16 + 19 + 61/125 + 32 + 2/3
+    h = 1/1000
+    while x < 10:
+        a = f(x + 0.001) - f(x)
+        c = math.sqrt(h*h + a*a)
+        dlugosc += c
+        x += 0.001
+    x = 2
+    while x < 10:
+        a = g(x + 0.001) - g(x)
+        c = math.sqrt(h*h + a*a)
+        dlugosc += c
+        x += 0.001
+    print(math.ceil(dlugosc))
+
+b()
+
+
+
+def c():
+    x = 2
+    pole = 0
+    while x < 10:
+        pole += math.floor((f(x) - g(x)))
+        x += 0.25
+    print(pole)
+
+
+c()

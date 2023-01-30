@@ -1,0 +1,5 @@
+ilosc = int(input())
+for i in range(ilosc):
+    slowo = input()
+    dl = len(slowo)
+    print(slowo[:int(dl/2)])

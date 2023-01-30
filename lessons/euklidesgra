@@ -1,0 +1,24 @@
+ilosc = int(input())
+
+for i in range(ilosc):
+    ab = list(map(int, input().split()))
+    a = ab[0]
+    b = ab[1]
+    if a == b:
+        print(a + b)
+        continue
+    while a > 0 and b > 0:
+        if a > b:
+            a = a - b
+        elif a < b:
+            b = b - a
+        elif a == b:
+            print(a + b)
+            break
+    if a < 0 < b:
+        print(b)
+    elif b < 0 < a:
+        print(a)
+
+
+

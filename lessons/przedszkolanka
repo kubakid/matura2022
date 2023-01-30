@@ -1,0 +1,8 @@
+import math
+
+ile = int(input())
+for i in range(ile):
+    l = list(map(int, input().split()))
+    nwd = math.gcd(l[0], l[1])
+    nww = l[0] * l[1] / nwd
+    print(int(nww))

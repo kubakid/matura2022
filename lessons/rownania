@@ -1,0 +1,12 @@
+abc = list(map(float, input().split()))
+a = abc[0]
+b = abc[1]
+c = abc[2]
+if a == 0 and b != c:
+    print("BR")
+elif a == 0 and b == c:
+    print("NWR")
+elif a != 0:
+    x = (c - b) / a
+    wynik = (round(x, 2))
+    print("{:.2f}".format(wynik))

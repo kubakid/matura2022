@@ -1,0 +1,86 @@
+import math
+
+def a():
+    with open('liczby3.txt' , 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    ilosc = 0
+    potegitrojki = [3**i for i in range(11)]
+    for i in liczby:
+        if int(i) in potegitrojki:
+            ilosc += 1
+    print(ilosc)
+
+
+
+a()
+
+def silnia(n):
+    liczba = 1
+    for i in range(2, n+1):
+        liczba *= i
+    return liczba
+
+def rekurencja(n):
+    if n == 0:
+        return 1
+    return n*silnia(n-1)
+
+
+
+
+def b():
+    with open('liczby3.txt' , 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    tak = []
+    for i in liczby:
+        suma  = 0
+        for j in i:
+            suma += silnia(int(j))
+        if suma == int(i):
+            tak.append(i)
+    for i in tak:
+        print(i)
+
+
+b()
+
+
+
+def c():
+    with open('liczby3.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    pierwsza = ''
+    maks = 0
+    nwd = 0
+    aktualnadl = 2
+    for i in range(len(liczby)-2):
+        nwd1 = math.gcd(int(liczby[i]), int(liczby[i + 1]))
+        nwd2 = math.gcd(nwd1, int(liczby[i+2]))
+        if nwd1 % nwd2 == 0 and nwd2 > 1:
+            aktualnadl += 1
+        else:
+            aktualnadl = 2
+
+        if aktualnadl > maks:
+            maks = aktualnadl
+            nwd = nwd2
+            pierwsza = liczby[i - maks+3]
+
+
+    print(pierwsza)
+    print(maks)
+    print(nwd)
+
+
+
+
+c()
+
+
+

@@ -1,0 +1,12 @@
+while True:
+    try:
+        wartosci = list(map(float, input().split()))
+        a = wartosci[0]
+        b = wartosci[1]
+        c = wartosci[2]
+        if a + b > c and a + c > b and b + c > a:
+            print("1")
+        else:
+            print("0")
+    except:
+         break

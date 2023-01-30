@@ -1,0 +1,9 @@
+b = 0
+while True:
+    try:
+        k = int(input())
+        b += k
+        print(b)
+    except:
+        break
+

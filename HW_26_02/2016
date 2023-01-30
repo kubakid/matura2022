@@ -1,0 +1,133 @@
+import copy
+def a():
+    with open('gra.txt', 'r') as file:
+        plansza = file.readlines()
+    for i in range(len(plansza)):
+        plansza[i] = plansza[i].rstrip()
+    wspolrzedne = [(0, 1), (0 , -1), (1, 1), (-1, -1), (-1,0), (1, 0), (1, -1), (-1, 1)]
+    wszystko = list()
+    for i in plansza:
+        wszystko.append(list(i))
+    for a in range(2, 39):
+        druga = copy.deepcopy(wszystko)
+        for i in range(12):
+            for j in range(20):
+                ilosc = 0
+                for xy in wspolrzedne:
+                    x = xy[0] + i
+                    y = xy[1] + j
+                    if x > 11:
+                        x = 0
+                    if x < 0:
+                        x = 11
+                    if y > 19:
+                        y = 0
+                    if y < 0:
+                        y = 19
+                    if wszystko[x][y] == 'X':
+                        ilosc += 1
+                    if (1 < ilosc < 4 and wszystko[i][j] == 'X') or (ilosc == 3 and wszystko[i][j] == "."):
+                        druga[i][j] = 'X'
+                    else:
+                        druga[i][j] = '.'
+                if a == 38 and i == 1 and j == 18:
+                    print(ilosc)
+        wszystko = copy.deepcopy(druga)
+
+
+a()
+
+
+def b():
+    with open('gra.txt', 'r') as file:
+        plansza = file.readlines()
+    for i in range(len(plansza)):
+        plansza[i] = plansza[i].rstrip()
+    wspolrzedne = [(0, 1), (0 , -1), (1, 1), (-1, -1), (-1,0), (1, 0), (1, -1), (-1, 1)]
+    wszystko = list()
+    for i in plansza:
+        wszystko.append(list(i))
+    druga = copy.deepcopy(wszystko)
+    suma = 0
+    for i in range(12):
+        for j in range(20):
+            ilosc = 0
+            for xy in wspolrzedne:
+                x = xy[0] + i
+                y = xy[1] + j
+                if x > 11:
+                    x = 0
+                if x < 0:
+                    x = 11
+                if y > 19:
+                    y = 0
+                if y < 0:
+                    y = 19
+                if wszystko[x][y] == 'X':
+                    ilosc += 1
+                if (1 < ilosc < 4 and wszystko[i][j] == 'X') or (ilosc == 3 and wszystko[i][j] == "."):
+                    druga[i][j] = 'X'
+                else:
+                    druga[i][j] = '.'
+    wszystko = copy.deepcopy(druga)
+    a = []
+    for i in wszystko:
+        for j in i:
+            a.append(j)
+    print(a.count("X"))
+
+
+b()
+
+
+def c():
+    with open('gra.txt', 'r') as file:
+        plansza = file.readlines()
+    for i in range(len(plansza)):
+        plansza[i] = plansza[i].rstrip()
+    wspolrzedne = [(0, 1), (0 , -1), (1, 1), (-1, -1), (-1,0), (1, 0), (1, -1), (-1, 1)]
+    wszystko = list()
+    kolejka = 100
+    for i in plansza:
+        wszystko.append(list(i))
+    komorki = list()
+    for a in range(2, 100):
+        druga = copy.deepcopy(wszystko)
+        for i in range(12):
+            for j in range(20):
+                ilosc = 0
+                for xy in wspolrzedne:
+                    x = xy[0] + i
+                    y = xy[1] + j
+                    if x > 11:
+                        x = 0
+                    if x < 0:
+                        x = 11
+                    if y > 19:
+                        y = 0
+                    if y < 0:
+                        y = 19
+                    if wszystko[x][y] == 'X':
+                        ilosc += 1
+                    if (1 < ilosc < 4 and wszystko[i][j] == 'X') or (ilosc == 3 and wszystko[i][j] == "."):
+                        druga[i][j] = 'X'
+                    else:
+                        druga[i][j] = '.'
+        wszystko = copy.deepcopy(druga)
+        h = []
+        for i in wszystko:
+            for j in i:
+                h.append(j)
+        zywe = h.count('X')
+        komorki.append(zywe)
+    while komorki[-1] == komorki[-2]:
+        komorki = komorki[:-1]
+        kolejka -= 1
+    print(komorki[-1])
+    print(kolejka)
+
+
+
+
+
+c()

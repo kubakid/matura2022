@@ -1,0 +1,92 @@
+def a():
+    with open('ciagi63.txt', 'r') as file:
+        ciagi = file.readlines()
+    for i in range(len(ciagi)):
+        ciagi[i] = ciagi[i].rstrip()
+    dwucykliczne = []
+    for i in ciagi:
+        dlugosc = len(i)
+        if dlugosc % 2 == 0:
+            pierwsza = i[:int(dlugosc/2)]
+            druga = i[int(dlugosc/2):]
+            if pierwsza == druga:
+                dwucykliczne.append(i)
+    for i in dwucykliczne:
+        print(i)
+
+
+a()
+
+def b():
+    with open('ciagi63.txt', 'r') as file:
+        ciagi = file.readlines()
+    for i in range(len(ciagi)):
+        ciagi[i] = ciagi[i].rstrip()
+    ilosc = 0
+    for i in ciagi:
+        tak = True
+        for j in range(len(i)-1):
+            if i[j] == "1":
+                if i[j+1]=='1':
+                    tak = False
+                    break
+        if tak:
+            ilosc += 1
+    print(ilosc)
+
+
+b()
+
+
+def rozklad(n):
+    czynniki = list()
+    while n != 1:
+        for i in range(2, n+1):
+            if n % i == 0:
+                n = int(n/i)
+                czynniki.append(i)
+                break
+        if n == 1:
+            break
+    return czynniki
+
+def pierwsza(n):
+    tak = True
+    for i in range(2,n-1):
+        if n % i == 0:
+            tak = False
+            break
+    return tak
+
+
+def c():
+    with open('ciagi63.txt', 'r') as file:
+        ciagi = file.readlines()
+    for i in range(len(ciagi)):
+        ciagi[i] = ciagi[i].rstrip()
+    arabskie = []
+    for i in ciagi:
+        liczba = int(i, base=2)
+        arabskie.append(liczba)
+    polpierwsze = []
+    for i in arabskie:
+        skladniki = rozklad(i)
+        if len(skladniki) == 2:
+            if pierwsza(skladniki[0]) and pierwsza(skladniki[1]):
+                polpierwsze.append(i)
+    print(max(polpierwsze))
+    print(min(polpierwsze))
+    print(len(polpierwsze))
+
+
+c()
+
+
+
+
+
+
+
+
+
+

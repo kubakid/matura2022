@@ -1,0 +1,109 @@
+def pierw(n):
+    tak = True
+    for i in range(2, n-1):
+        if n % i == 0:
+            tak = False
+            break
+    return tak
+
+def a():
+    with open('pary.txt', 'r') as file:
+        pary = file.readlines()
+    for i in range(len(pary)):
+        pary[i] = pary[i].rstrip()
+    liczby = []
+    for i in pary:
+        lista = list(i.split())
+        liczba = int(lista[0])
+        liczby.append(liczba)
+    trojki = []
+    for i in liczby:
+        pierwsze = []
+        roznica = -1000
+        para = ''
+        if int(i) % 2 == 0:
+            for j in range(2, i):
+                if pierw(j):
+                    pierwsze.append(j)
+            for k in pierwsze:
+                for h in pierwsze:
+                    if k + h == i:
+                        if k - h > roznica:
+                            para = str(str(h) +" "+ str(k))
+            trojki.append(str(i) +" "+  para)
+    for i in trojki:
+        print(i)
+
+
+
+a()
+
+
+
+def b():
+    with open('pary.txt', 'r') as file:
+        pary = file.readlines()
+    for i in range(len(pary)):
+        pary[i] = pary[i].rstrip()
+    for i in pary:
+        lista = list(i.split())
+        slowo = lista[1]
+        makstekst = ''
+        aktualny = ''
+        for j in range(len(slowo)-1):
+            if len(aktualny) == 0 or aktualny[0] == slowo[j]:
+                aktualny += slowo[j]
+            else:
+                if len(aktualny) > len(makstekst):
+                    makstekst = aktualny
+                aktualny = ''
+                aktualny += slowo[j]
+        if len(aktualny) > len(makstekst):
+            makstekst = aktualny
+        if len(makstekst) == 0:
+            makstekst = aktualny
+        print(makstekst + ' '+ str(len((makstekst))))
+
+
+
+b()
+
+
+def mniejszy(a, b):
+    liczba1 = int(a.split(" ")[0])
+    liczba2 = int(b.split(" ")[0])
+    if liczba2 > liczba1:
+        return True
+    slowo1 = a.split(" ")[1]
+    slowo2 = b.split(" ")[1]
+    if liczba1 == liczba2 and slowo2 > slowo1:
+        return True
+    return False
+
+
+def c():
+    with open('pary.txt', 'r') as file:
+        pary = file.readlines()
+    for i in range(len(pary)):
+        pary[i] = pary[i].rstrip()
+    teksty = []
+    for i in pary:
+        liczba = int(i.split()[0])
+        slowo = i.split()[1]
+        if len(slowo) == liczba:
+            teksty.append(i)
+    maks = teksty[0]
+    for i in range(1, len(teksty)):
+        if mniejszy(teksty[i], maks):
+            maks = teksty[i]
+    print(maks)
+
+c()
+
+
+
+
+
+
+
+

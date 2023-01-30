@@ -1,0 +1,3 @@
+liczby = list(map(int, input().split()))
+suma = liczby[0] * liczby[1] + liczby[2]*liczby[3]
+print(suma)

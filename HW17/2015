@@ -1,0 +1,59 @@
+def a():
+    with open('liczby.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    ilosc = 0
+    for i in liczby:
+        if i.count("0") > i.count('1'):
+            ilosc += 1
+    print(ilosc)
+
+a()
+
+
+def b():
+    with open('liczby.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    dwa = 0
+    osiem = 0
+    for i in liczby:
+        liczba = int(i, base = 2)
+        if liczba % 2 == 0:
+            dwa += 1
+        if liczba % 8 == 0:
+            osiem += 1
+    print(dwa)
+    print(osiem)
+
+
+b()
+
+
+def c():
+    with open('liczby.txt', 'r') as file:
+        liczby = file.readlines()
+    for i in range(len(liczby)):
+        liczby[i] = liczby[i].rstrip()
+    maks = 0
+    maksind = 0
+    min = 99999999
+    minind = 0
+    arabskie = []
+    for i in liczby:
+        liczba = int(i, base=2 )
+        arabskie.append(liczba)
+    for i in range(len(arabskie)):
+        if arabskie[i] > maks:
+            maks = arabskie[i]
+            maksind = i
+        if arabskie[i] < min:
+            min = arabskie[i]
+            minind = i
+    print(maksind + 1)
+    print(minind + 1)
+
+
+c()

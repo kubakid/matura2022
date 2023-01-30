@@ -1,0 +1,16 @@
+def pierwsza(n):
+    pierwsza = True
+    for i in range(2, n-1):
+        if n % i == 0:
+            pierwsza = False
+            break
+    return pierwsza
+
+
+test = int(input())
+for i in range(test):
+    h = int(input())
+    if pierwsza(h) and h>1:
+        print("TAK")
+    else:
+        print("NIE")
